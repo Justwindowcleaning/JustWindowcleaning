@@ -2,9 +2,6 @@
 import React, { useState } from 'react';
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState('today');
-  const [subView, setSubView] = useState('list');
-
   const [jobs, setJobs] = useState([
     { id: 1, name: 'Arthur Pendelton', address: '12 Rose Lane, Royston', phone: '447000000001', price: 28.00, status: 'due', paid: false, gateCode: '4219', notes: 'Back gate is left unlocked.', route: 'Tuesday 4-Weekly' },
     { id: 2, name: 'Beatrice Vance', address: '45 Church Road, Royston', phone: '447000000002', price: 35.00, status: 'completed', paid: true, gateCode: 'None', notes: 'Ring doorbell twice.', route: 'Tuesday 4-Weekly' }
