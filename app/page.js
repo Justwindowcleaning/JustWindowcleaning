@@ -1,10 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 
-export default function Page() {
+export default function JustWindowCleaningApp() {
   const [jobs, setJobs] = useState([
-    { id: 1, name: 'Arthur Pendelton', address: '12 Rose Lane, Royston', phone: '447000000001', price: 28.00, status: 'due', paid: false, gateCode: '4219', notes: 'Back gate is left unlocked.', route: 'Tuesday 4-Weekly' },
-    { id: 2, name: 'Beatrice Vance', address: '45 Church Road, Royston', phone: '447000000002', price: 35.00, status: 'completed', paid: true, gateCode: 'None', notes: 'Ring doorbell twice.', route: 'Tuesday 4-Weekly' }
+    { id: 1, name: 'Arthur Pendelton', address: '12 Rose Lane, Royston', phone: '447000000001', price: 28.00, status: 'due', paid: false, gateCode: '4219', notes: 'Back gate is left unlocked.' },
+    { id: 2, name: 'Beatrice Vance', address: '45 Church Road, Royston', phone: '447000000002', price: 35.00, status: 'completed', paid: true, gateCode: 'None', notes: 'Ring doorbell twice.' },
+    { id: 3, name: 'Charles Montgomery', address: '8 Willow Close, Royston', phone: '447000000003', price: 42.00, status: 'due', paid: false, gateCode: '9912', notes: 'Key safe code under meter box.' }
   ]);
 
   const toggleJobDone = (id) => {
@@ -19,40 +20,41 @@ export default function Page() {
   const completedCount = jobs.filter(j => j.status === 'completed').length;
 
   return (
-    <div className="max-w-md mx-auto bg-slate-950 text-white min-h-screen p-4 font-sans">
-      <header className="bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-4 flex justify-between items-center">
+    <div style={{ maxWidth: '480px', margin: '0 auto', background: '#090d16', color: '#ffffff', minHeight: '100vh', padding: '16px', fontFamily: 'sans-serif' }}>
+      <header style={{ background: '#111827', border: '1px solid #1f2937', padding: '16px', borderRadius: '16px', marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 className="text-base font-black text-blue-400">JUST WINDOWCLEANING</h1>
-          <p className="text-xs text-slate-400">Tuesday Round · {completedCount} of {jobs.length} Done</p>
+          <h1 style={{ fontSize: '15px', fontWeight: '900', color: '#60a5fa', margin: '0 0 4px 0' }}>JUST WINDOWCLEANING</h1>
+          <p style={{ fontSize: '12px', color: '#9ca3af', margin: '0' }}>Tuesday Round · {completedCount} of {jobs.length} Done</p>
         </div>
-        <span className="text-xs bg-emerald-950 text-emerald-400 border border-emerald-800 px-2.5 py-1 rounded-full font-bold">
+        <span style={{ fontSize: '12px', background: '#064e3b', color: '#34d399', border: '1px solid #065f46', padding: '6px 10px', borderRadius: '9999px', fontWeight: 'bold' }}>
           £{totalCollected.toFixed(2)} collected
         </span>
       </header>
 
-      <div className="space-y-3">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {jobs.map((job, index) => (
-          <div key={job.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
-            <div className="flex justify-between items-start">
+          <div key={job.id} style={{ background: '#111827', border: '1px solid #1f2937', padding: '16px', borderRadius: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
               <div>
-                <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded font-black">Stop #{index + 1}</span>
-                <h2 className="text-base font-extrabold mt-1 text-slate-100">{job.name}</h2>
-                <p className="text-xs text-slate-400">{job.address}</p>
+                <span style={{ fontSize: '10px', background: '#2563eb', color: '#ffffff', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold' }}>Stop #{index + 1}</span>
+                <h2 style={{ fontSize: '16px', fontWeight: 'bold', margin: '6px 0 2px 0' }}>{job.name}</h2>
+                <p style={{ fontSize: '12px', color: '#9ca3af', margin: '0' }}>{job.address}</p>
+                {job.notes && <p style={{ fontSize: '11px', color: '#fbbf24', margin: '6px 0 0 0' }}>⚠️ {job.notes}</p>}
               </div>
-              <span className="text-lg font-black text-emerald-400">£{job.price.toFixed(2)}</span>
+              <span style={{ fontSize: '18px', fontWeight: '900', color: '#34d399' }}>£{job.price.toFixed(2)}</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid #1f2937' }}>
               <button 
                 onClick={() => toggleJobDone(job.id)}
-                className={`py-2.5 rounded-xl font-bold text-xs ${job.status === 'completed' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-200'}`}
+                style={{ padding: '10px', borderRadius: '10px', fontWeight: 'bold', fontSize: '12px', cursor: 'pointer', background: job.status === 'completed' ? '#059669' : '#1f2937', color: '#ffffff', border: 'none' }}
               >
                 {job.status === 'completed' ? '✓ CLEANED' : 'MARK CLEANED'}
               </button>
 
               <button 
                 onClick={() => togglePaid(job.id)}
-                className={`py-2.5 rounded-xl font-bold text-xs ${job.paid ? 'bg-emerald-950 text-emerald-300 border border-emerald-800' : 'bg-red-950 text-red-300 border border-red-900'}`}
+                style={{ padding: '10px', borderRadius: '10px', fontWeight: 'bold', fontSize: '12px', cursor: 'pointer', background: job.paid ? '#064e3b' : '#7f1d1d', color: job.paid ? '#34d399' : '#fca5a5', border: job.paid ? '1px solid #059669' : '1px solid #991b1b' }}
               >
                 {job.paid ? '✓ PAID' : 'UNPAID'}
               </button>
