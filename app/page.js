@@ -1,8 +1,8 @@
 export default function JustWindowCleaningApp() {
   return (
-    <main>
-      <h1>Welcome to Just Window Cleaning</h1>
-      {/* Keep your rest of the component layout here */}
+    <main style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>Just Window Cleaning</h1>
+      <p>Welcome to our website!</p>
     </main>
   );
 }
